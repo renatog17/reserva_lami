@@ -34,7 +34,9 @@ public class SecurityConfigurations {
 						.requestMatchers(HttpMethod.PATCH, "/desativar").hasRole("ADMIN")
 						.requestMatchers(HttpMethod.POST, "/reservante").permitAll()
 						.requestMatchers(HttpMethod.POST, "/reserva").hasRole("USER")
-						.anyRequest().authenticated()
+						//.requestMatchers("/swagger-ui/**").permitAll()
+						//.anyRequest().authenticated()
+						.anyRequest().permitAll()
 						)
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
 				.build();
