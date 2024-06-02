@@ -36,15 +36,15 @@ public class AuthenticationController {
 		return ResponseEntity.ok(new LoginResponseDTO(token));
 	}
 	
-	@PostMapping("/register")
-	public ResponseEntity register(@RequestBody RegisterDTO data) {
-		if(this.userRepository.findByLogin(data.login()) != null)
-			return ResponseEntity.badRequest().build();
-		String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
-		User newUser = new User(data.login(), encryptedPassword, data.role());
-		
-		this.userRepository.save(newUser);
-		
-		return ResponseEntity.ok().build();
-	}
+//	@PostMapping("/register")
+//	public ResponseEntity register(@RequestBody RegisterDTO data) {
+//		if(this.userRepository.findByLogin(data.login()) != null)
+//			return ResponseEntity.badRequest().build();
+//		String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
+//		User newUser = new User(data.login(), encryptedPassword, data.role());
+//		
+//		this.userRepository.save(newUser);
+//		
+//		return ResponseEntity.ok().build();
+//	}
 }

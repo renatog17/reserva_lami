@@ -17,7 +17,8 @@ public class Reserva {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Timestamp horaEDia;
+	private Timestamp horaEDiaInicio;
+	private Timestamp horaEDiaTermino;
 	@ManyToOne
 	@JoinColumn(name = "reservante_id")
 	private Reservante reservante;
@@ -32,7 +33,7 @@ public class Reserva {
 
 	public Reserva(LocalDateTime horaEDia, Reservante reservante, Lami lami) {
 		super();
-		this.horaEDia = Timestamp.valueOf(horaEDia);
+		this.horaEDiaInicio = Timestamp.valueOf(horaEDia);
 		this.reservante = reservante;
 		this.lami = lami;
 	}
@@ -41,8 +42,12 @@ public class Reserva {
 		return id;
 	}
 
-	public LocalDateTime getHoraEDia() {
-		return horaEDia.toLocalDateTime();
+	public Timestamp getHoraEDiaInicio() {
+		return horaEDiaInicio;
+	}
+
+	public Timestamp getHoraEDiaTermino() {
+		return horaEDiaTermino;
 	}
 
 	public Reservante getReservante() {
